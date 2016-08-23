@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<package name="adm" namespace="/" extends="struts-default">
+		<action name="adm_answerlist" class="sesschool.bank.action.BoardAction" method="answerlist">
+			<result name="success">./bbs/adm/adm_answerlist.jsp</result>
+		</action>
+		<action name="adm_answerview" class="sesschool.bank.action.BoardAction" method="answerview">
+			<result name="success">./bbs/adm/adm_answerview.jsp</result>
+		</action>
+		<action name="adm_loan" class="sesschool.bank.action.BoardAction" method="loan">
+			<result name="success">./bbs/adm/adm_loan.jsp</result>
+		</action>
+
+	</package>
+
+	<package name="cus" namespace="/" extends="struts-default">
+		
+		<action name="board_list" class="sesschool.bank.action.BoardAction" method="list">
+			<result name="success">./bbs/cus/board_list.jsp</result>
+		</action>
+		<action name="board_view" class="sesschool.bank.action.BoardAction" method="view">
+			<result name="success">./bbs/cus/board_view.jsp</result>
+		</action>
+		<action name="board_write" class="sesschool.bank.action.BoardAction" method="write">
+			<result name="success">./bbs/cus/board_write.jsp</result>
+		</action>	
+
+	</package>
+
+
+</struts>

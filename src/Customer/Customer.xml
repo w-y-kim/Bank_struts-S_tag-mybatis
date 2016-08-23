@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<package name="join" namespace="/" extends="struts-default">
+
+		<action name="info" class="sesschool.bank.action.CustomerAction" method="info">
+			<result name="success">./join/info.jsp</result>
+		</action>
+		<action name="join_pop">
+			<result>./join/join_pop.jsp</result>
+		</action>
+		<action name="join_pop_Result" class="sesschool.bank.action.CustomerAction" method="join_pop">
+			<result name="success">./join/join_pop.jsp</result>
+		</action>
+		<action name="join" class="sesschool.bank.action.CustomerAction" method="join">
+			<result name="success">./join/join.jsp</result>
+		</action>
+		<action name="joinResult" class="sesschool.bank.action.CustomerAction" method="joinResult">
+		
+			<result name="success">./index.jsp</result>
+		</action>
+
+
+	</package>
+
+	<package name="login" namespace="/" extends="struts-default">
+
+		<action name="find_idpw" class="sesschool.bank.action.CustomerAction" method="find_idpw">
+			<result name="success">./login/find_idpw.jsp</result>
+		</action>
+		<action name="login" class="sesschool.bank.action.CustomerAction" method="login">
+			<result name="success">./login/login.jsp</result>
+		</action>
+
+
+	</package>
+
+
+</struts>

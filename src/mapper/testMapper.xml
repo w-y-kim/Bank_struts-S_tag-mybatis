@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cus">
+
+<!-- join액션에서 실행할 mybatis mapper / insert는 resultType이 필요없음 -->
+<insert id="insertCus" parameterType="Customer">
+	INSERT INTO CUSTOMER VALUES(#{custid},#{password},#{email},#{division},#{name},#{idno},#{address})
+</insert>
+
+<select id="selectCus" parameterType="String" resultType="Customer" >
+	SELECT * FROM CUSTOMER WHERE CUSTID=#{custid}
+</select>
+
+</mapper>
