@@ -16,13 +16,13 @@
 		
 		<div id="header"><!-- 상단 -->
 			<div id="top"><!-- 멤버 -->
-				<a href="join/info.action">회원정보수정</a><a href="login/login.action">로그아웃</a>&nbsp;&nbsp;&nbsp;
+				<a href="info.action">회원정보수정</a><a href="logout.action">로그아웃</a>&nbsp;&nbsp;&nbsp;
 			</div>
 			<div id="adm_navi"><!-- 네비게이션 -->
 			<a href=""><img src="images/logo.png" width="150" /></a>
 			<ul>
-				<li><a href="bbs/adm/adm_loan.action">대출승인</a></li>
-				<li class="select"><a href="bbs/adm/adm_answerlist.action">문의답변</a></li>
+				<li><a href="adm_loan.action">대출승인</a></li>
+				<li class="select"><a href="adm_answerlist.action">문의답변</a></li>
 			</ul>
 			</div>
 			
@@ -43,21 +43,21 @@
 				</tr>
 				<tr>
 					<td>3</td>
-					<td  class="board_title"><a href="bbs/adm/adm_answerview.action">계좌개설은 어떻게...</a></td>
+					<td  class="board_title"><a href="adm_answerview.action">계좌개설은 어떻게...</a></td>
 					<td>2016-01-06</td>
 					<td>test1</td>
 					<td>10</td>
 				</tr>
 				<tr>
 					<td>2</td>
-					<td class="board_title"><a href="bbs/adm/adm_answerview.action">계좌개설은 어떻게...</a></td>
+					<td class="board_title"><a href="adm_answerview.action">계좌개설은 어떻게...</a></td>
 					<td>2016-01-06</td>
 					<td>test1</td>
 					<td>10</td>
 				</tr>
 				<tr>
 					<td>1</td>
-					<td class="board_title"><a href="bbs/adm/adm_answerview.action">계좌개설은 어떻게...</a></td>
+					<td class="board_title"><a href="adm_answerview.action">계좌개설은 어떻게...</a></td>
 					<td>2016-01-06</td>
 					<td>test1</td>
 					<td>10</td>

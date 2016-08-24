@@ -16,13 +16,13 @@
 		
 		<div id="header"><!-- 상단 -->
 			<div id="top"><!-- 멤버 -->
-				<a href="join/info.action">회원정보수정</a><a href="login/login.action">로그아웃</a>&nbsp;&nbsp;&nbsp;
+				<a href="info.action">회원정보수정</a><a href="login.action">로그아웃</a>&nbsp;&nbsp;&nbsp;
 			</div>
 			<div id="adm_navi"><!-- 네비게이션 -->
 			<a href=""><img src="images/logo.png" width="150" /></a>
 			<ul>
-				<li><a href="bbs/adm/adm_loan.action">대출승인</a></li>
-				<li class="select"><a href="bbs/adm/adm_answerlist.action">문의답변</a></li>
+				<li><a href="adm_loan.action">대출승인</a></li>
+				<li class="select"><a href="adm_answerlist.action">문의답변</a></li>
 			</ul>
 			</div>
 			
@@ -93,7 +93,7 @@
 			</table>
 			<p class="list_btn">
 				<a href="#">삭제</a>
-				<a href="bbs/adm/adm_answerlist.action" class="select">목록</a>
+				<a href="adm_answerlist.action" class="select">목록</a>
 				
 				
 			</p>

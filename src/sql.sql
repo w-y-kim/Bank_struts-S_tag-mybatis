@@ -16,6 +16,7 @@ ADDRESS VARCHAR2(100)
 <!-- 제약조건 추가 --> 
 alter table CUSTOMER add primary key (CUSTID)
 
+UPDATE CUSTOMER SET CUSTID = 'aaa' WHERE CUSTID  = 'aa';
 
 
 CREATE TABLE ACCOUNT(

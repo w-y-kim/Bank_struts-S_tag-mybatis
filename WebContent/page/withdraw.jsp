@@ -16,14 +16,14 @@
 		
 		<div id="header"><!-- 상단 -->
 			<div id="top"><!-- 멤버 -->
-				<a href="join/info.action">회원정보수정</a><a href="login/login.action">로그아웃</a>&nbsp;&nbsp;&nbsp;
+				<a href="info.action">회원정보수정</a><a href="logout.action">로그아웃</a>&nbsp;&nbsp;&nbsp;
 			</div>
 			<div id="navi">
-			<a href=""><img src="images/logo.png" width="150" /></a>
+			<a href="#"><img src="images/logo.png" width="150" /></a>
 			<div class="gnb"><!-- 네비게이션 -->
      
 				 <ul>
-					<li><a href="page/haveaccount.action" class="select">보유계좌현황</a>
+					<li><a href="haveaccount.action">보유계좌현황</a>
 						<!-- <ul>
 						   <li><a href="#">서브메뉴1</a></li>
 						   <li><a href="#">서브메뉴2</a></li>
@@ -31,14 +31,14 @@
 						</ul> -->
 					</li>
 
-					<li><a href="account/addaccount_1.action">신규계좌개설</a>
+					<li><a href="addaccount_1.action">신규계좌개설</a>
 						<ul>
-						   <li><a href="account/addaccount_1.action">예금계좌</a></li>
-						   <li><a href="account/addaccount_2.action">적금계좌</a></li>
-						   <li><a href="account/addaccount_3.action">대출계좌</a></li>
+						   <li><a href="addaccount_1.action">예금계좌</a></li>
+						   <li><a href="addaccount_2.action">적금계좌</a></li>
+						   <li><a href="addaccount_3.action">대출계좌</a></li>
 						</ul>
 					</li>
-					<li><a href="bbs/cus/board_list.action">고객문의게시판</a>
+					<li><a href="board_list.action">고객문의게시판</a>
 						<!-- <ul>
 						   <li><a href="#">서브메뉴1</a></li>
 						   <li><a href="#">서브메뉴2</a></li>

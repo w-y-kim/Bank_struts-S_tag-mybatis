@@ -11,5 +11,17 @@
 <select id="selectCus" parameterType="String" resultType="Customer" >
 	SELECT * FROM CUSTOMER WHERE CUSTID=#{custid}
 </select>
+<update id="updateCus" parameterType="Customer">
+	UPDATE CUSTOMER 
+	<set>
+	<if test="password != ''">PASSWORD = #{password},</if>
+	<if test="email != ''">EMAIL = #{email},</if>
+	<if test="division != ''">DIVISION = #{division},</if>
+	<if test="name != ''">NAME = #{name},</if>
+	<if test="idno != ''">IDNO = #{idno},</if>
+	<if test="address != ''">ADDRESS = #{address}</if>
+	</set>
+	WHERE CUSTID = #{custid} 
+</update>
 
 </mapper>

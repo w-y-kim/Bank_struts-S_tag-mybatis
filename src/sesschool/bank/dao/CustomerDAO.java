@@ -43,7 +43,20 @@ public class CustomerDAO {
 
 	public int updateCustomer(Customer customer) {
 		int result = 0;
-
+		
+		SqlSession sqlSess = sqlSessFac.openSession();
+		try{
+			System.out.println("DAO : updateCus in     " + customer );
+			
+			result = sqlSess.update("cus.updateCus", customer);
+			System.out.println("DAO : updateCus out    " + result);
+			sqlSess.commit();
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally{
+			if(sqlSess != null)sqlSess.close();
+		}
+		
 		return result;
 
 	}

@@ -7,7 +7,6 @@
 <meta charset="utf-8">
 <title>SESbank</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-
 </head>
 
 <body>
@@ -19,10 +18,10 @@
 		<div style="display:;">
 
 <s:if test="custid != null">
-			<s:if test="duplicated">
+			<s:if test="%{duplicated}">
 				[<span>${custid}</span>] 아이디는 사용가능합니다.
 				<p class="list_btn">
-					<a href="#">적용</a>
+					<a href="javascript:self.close()">적용</a>
 				</p>
 			</s:if>
 
@@ -40,7 +39,7 @@
 
 		<form action="join_pop_Result.action" name="popform">
 			<p class="list_btn">
-				<input type="text" class="wr_idcheck" name="custid" /> <a
+				<input type="text" id="txt" class="wr_idcheck" name="custid"  value="${param.param}" /> <a
 					href="javascript:popform.submit();">중복확인</a>
 			</p>
 		</form>
