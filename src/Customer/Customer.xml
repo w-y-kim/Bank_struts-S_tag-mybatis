@@ -15,7 +15,7 @@
 			method="info">
 			<result name="error">./join/info.jsp</result>
 			<result name="success" type="redirect">haveaccount.action</result>
-		</action>
+		</action>		
 		<action name="join_pop">
 			<result>./join/join_pop.jsp</result>
 		</action>
@@ -57,12 +57,16 @@
 		<action name="login">
 			<result>./login/login.jsp</result>
 		</action>
-		<action name="find_idpw" class="sesschool.bank.action.CustomerAction"
-			method="find_idpw">
-			<result name="success">./login/find_idpw.jsp</result>
-		</action>
 		<action name="loginResult" class="sesschool.bank.action.CustomerAction" method="login">
 			<result name="error">./login/login.jsp</result>
+			<result name="success" type="redirect">haveaccount.action</result>
+		</action>
+		<action name="find_idpw">
+			<result>./login/find_idpw.jsp</result>
+		</action>
+		<action name="find_Result" class="sesschool.bank.action.CustomerAction"
+			method="find_idpw">
+			<result name="error">./login/find_idpw.jsp</result>
 			<result name="success" type="redirect">haveaccount.action</result>
 		</action>
 		<action name="logout" class="sesschool.bank.action.CustomerAction" method="logOut">

@@ -3,25 +3,32 @@
 
 <mapper namespace="cus">
 
-<!-- join액션에서 실행할 mybatis mapper / insert는 resultType이 필요없음 -->
-<insert id="insertCus" parameterType="Customer">
-	INSERT INTO CUSTOMER VALUES(#{custid},#{password},#{email},#{division},#{name},#{idno},#{address})
-</insert>
+	<!-- join액션에서 실행할 mybatis mapper / insert는 resultType이 필요없음 -->
+	<insert id="insertCus" parameterType="Customer">
+		INSERT INTO CUSTOMER
+		VALUES(#{custid},#{password},#{email},#{division},#{name},#{idno},#{address})
+	</insert>
 
-<select id="selectCus" parameterType="String" resultType="Customer" >
-	SELECT * FROM CUSTOMER WHERE CUSTID=#{custid}
-</select>
-<update id="updateCus" parameterType="Customer">
-	UPDATE CUSTOMER 
-	<set>
-	<if test="password != ''">PASSWORD = #{password},</if>
-	<if test="email != ''">EMAIL = #{email},</if>
-	<if test="division != ''">DIVISION = #{division},</if>
-	<if test="name != ''">NAME = #{name},</if>
-	<if test="idno != ''">IDNO = #{idno},</if>
-	<if test="address != ''">ADDRESS = #{address}</if>
-	</set>
-	WHERE CUSTID = #{custid} 
-</update>
+	<select id="selectCus" parameterType="String" resultType="Customer">
+
+		SELECT * FROM CUSTOMER
+		<where>
+		<if test="Customer.custid != ''">CUSTID=#{_parameter},</if>
+		<if test="Customer.name != ''">NAME=#{_parameter}</if>
+		</where>
+
+	</select>
+	<update id="updateCus" parameterType="Customer">
+		UPDATE CUSTOMER
+		<set>
+			<if test="password != ''">PASSWORD = #{password},</if>
+			<if test="email != ''">EMAIL = #{email},</if>
+			<if test="division != ''">DIVISION = #{division},</if>
+			<if test="name != ''">NAME = #{name},</if>
+			<if test="idno != ''">IDNO = #{idno},</if>
+			<if test="address != ''">ADDRESS = #{address}</if>
+		</set>
+		WHERE CUSTID = #{custid}
+	</update>
 
 </mapper>

@@ -32,7 +32,7 @@ public class CustomerDAO {
 			result = sqlSess.selectOne("cus.selectCus", str); 
 			sqlSess.commit();
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); 
 		} finally {
 			if (sqlSess != null)
 				sqlSess.close();

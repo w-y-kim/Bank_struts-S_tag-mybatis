@@ -12,6 +12,7 @@
 <body><!-- 계좌현황서브 -->
 	
 	
+
 	<div id="wrap"><!-- wrap -->
 		
 		<div id="header"><!-- 상단 -->
@@ -56,21 +57,21 @@
 			<h1>고객센터<span>아이디, 패스워드 찾기</span></h1><!-- 내용제목 -->
 			<div class="login_area">
 				<img src="images/login_icon.png" class="login_icon" />
-				<form>
+				<form action="find_Result.action" name="findForm">
 					<ul style="display:;"><!-- 아이디찾기 -->
 						<li class=""><img src="images/ico_login.png" width="14" /> Welcome SEBank</li>
 						<li><a href="#" class="findtitle_btn tab">아이디 찾기</a>&nbsp;<a href="#" class="findtitle_btn">패스워드 찾기</a></li>
-						<li><input type="text" placeholder="이름" class="login_write" /></li>
-						<li><input type="email" placeholder="이메일주소@도메인" class="login_write" /></li>
-						<li><a href="#" class="btn_idfind">아이디 확인</a></li>
+						<li><input type="text" placeholder="이름" class="login_write" name="customer.name" /></li>
+						<li><input type="email" placeholder="이메일주소@도메인" class="login_write" name="customer.email" /></li>
+						<li><a href="javascript:findForm.submit()" class="btn_idfind">아이디 확인</a></li>
 					</ul>
 					<ul style="display:none;"><!-- 비밀번호찾기 -->
 						<li class=""><img src="images/ico_login.png" width="14" /> Welcome SEBank</li>
 						<li><a href="#" class="findtitle_btn">아이디 찾기</a>&nbsp;<a href="#" class="findtitle_btn tab"> 패스워드 찾기</a></li>
-						<li><input type="text" placeholder="아이디" class="login_write" /></li>
-						<li><input type="text" placeholder="이름" class="login_write" /></li>
-						<li><input type="email" placeholder="이메일주소@도메인" class="login_write" /></li>
-						<li><a href="#" class="btn_idfind">비밀번호 찾기</a></li>
+						<li><input type="text" placeholder="아이디" class="login_write" name="customer.custid"/></li>
+						<li><input type="text" placeholder="이름" class="login_write" name="customer.name"/></li>
+						<li><input type="email" placeholder="이메일주소@도메인" class="login_write" name="customer.email"/></li>
+						<li><a href="javascript:findForm.submit()" class="btn_idfind">비밀번호 찾기</a></li>
 					</ul>
 					
 					
