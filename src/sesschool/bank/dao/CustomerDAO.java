@@ -26,6 +26,7 @@ public class CustomerDAO {
 	}
 
 	public Customer selectCustomer(String str) {
+		System.out.println("DAO.selectCustomer 들어옴");
 		Customer result = null;
 		SqlSession sqlSess = sqlSessFac.openSession();
 		try {
@@ -38,9 +39,26 @@ public class CustomerDAO {
 				sqlSess.close();
 		}
 		return result;
+	}
+	public Customer selectCustomer2(Customer customer) {
+		System.out.println("DAO.selectCustomer2 들어옴" + customer);
+		Customer result = null;
+		SqlSession sqlSess = sqlSessFac.openSession();
+		try {
+			result = (Customer)sqlSess.selectOne("cus.selectCus2", customer); 
+			System.out.println("mapper결과 : " +result);
+			sqlSess.commit();
+		} catch (Exception e) {
+			e.printStackTrace(); 
+		} finally {
+			if (sqlSess != null)
+				sqlSess.close();
+		}
+		return result;
 
 	}
-
+	
+	
 	public int updateCustomer(Customer customer) {
 		int result = 0;
 		

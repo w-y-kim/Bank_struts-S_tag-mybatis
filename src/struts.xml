@@ -10,18 +10,39 @@
 
 
 
-<package name="cus" namespace="/" extends="struts-default">
-<!-- 액션완성전까지 주석
-	<default-action-ref name="index"></default-action-ref>
-	<action name="index"><result>index.jsp</result></action>
+	<package name="basic" namespace="/" extends="struts-default">
+		<!-- 액션완성전까지 주석 <default-action-ref name="index"></default-action-ref> 
+			<action name="index"><result>index.jsp</result></action> -->
+		<interceptors>
+			<interceptor name="logininterceptor"
+				class="sesschool.bank.interceptor.LoginInterceptor"></interceptor>
+			<interceptor name="admininterceptor"
+				class="sesschool.bank.interceptor.AdminInterceptor"></interceptor>
 
- -->
- </package>
+			<interceptor-stack name="loginInterceptorStack">
+				<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+				<interceptor-ref name="logininterceptor"></interceptor-ref>
+			</interceptor-stack>
+			<interceptor-stack name="adminInterceptorStack">
+				<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+				<interceptor-ref name="admininterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
 
 
-	<include file="Customer/Customer.xml"/>
-	<include file="Board/Board.xml"/>
 
-	<!-- Add packages here -->  
+		<global-results>
+			<result name="login" type="redirect">login.action</result>
+		</global-results>
+	</package>
+
+
+
+	<include file="Customer/Customer.xml" />
+	<include file="Board/Board.xml" />
+
+	<!-- Add packages here -->
 
 </struts>

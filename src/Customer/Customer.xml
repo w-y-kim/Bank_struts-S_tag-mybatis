@@ -6,16 +6,18 @@
 <struts>
 
 
-	<package name="join" namespace="/" extends="struts-default">
+	<package name="join" namespace="/" extends="basic">
 
-		<action name= "info">
+
+
+		<action name="info">
 			<result>./join/info.jsp</result>
 		</action>
 		<action name="infoResult" class="sesschool.bank.action.CustomerAction"
 			method="info">
 			<result name="error">./join/info.jsp</result>
 			<result name="success" type="redirect">haveaccount.action</result>
-		</action>		
+		</action>
 		<action name="join_pop">
 			<result>./join/join_pop.jsp</result>
 		</action>
@@ -36,8 +38,14 @@
 
 	</package>
 
-	<package name="main" namespace="/" extends="struts-default">
+	<package name="main" namespace="/" extends="basic">
+		
+<default-interceptor-ref name="loginInterceptorStack"></default-interceptor-ref>
+
+
+	
 		<action name="haveaccount">
+		<interceptor-ref name="loginInterceptorStack"/>
 			<result>./page/haveaccount.jsp</result>
 		</action>
 		<action name="addaccount_1">
@@ -46,18 +54,20 @@
 		<action name="addaccount_2">
 			<result>./account/addaccount_2.jsp</result>
 		</action>
+
 		<action name="addaccount_3">
 			<result>./account/addaccount_3.jsp</result>
 		</action>
 	</package>
 
 
-	<package name="login" namespace="/" extends="struts-default">
+	<package name="login" namespace="/" extends="basic">
 
 		<action name="login">
 			<result>./login/login.jsp</result>
 		</action>
-		<action name="loginResult" class="sesschool.bank.action.CustomerAction" method="login">
+		<action name="loginResult" class="sesschool.bank.action.CustomerAction"
+			method="login">
 			<result name="error">./login/login.jsp</result>
 			<result name="success" type="redirect">haveaccount.action</result>
 		</action>
@@ -69,8 +79,10 @@
 			<result name="error">./login/find_idpw.jsp</result>
 			<result name="success" type="redirect">haveaccount.action</result>
 		</action>
-		<action name="logout" class="sesschool.bank.action.CustomerAction" method="logOut">
-		<result name="success" type="redirect">login.action</result> 
+		<action name="logout" class="sesschool.bank.action.CustomerAction"
+			method="logOut">
+
+			<result name="success" type="redirect">login.action</result>
 		</action>
 	</package>
 

@@ -88,12 +88,20 @@ public class CustomerAction extends ActionSupport implements SessionAware{
 		
 		System.out.println(customer);//아이디로 찾을 때는 이름과 메일 , 패스워드로 찾을 때는 이름 메일 아이디 
 		
-		Customer result = dao.selectCustomer(customer.getName());
+		Customer result = dao.selectCustomer2(customer);
 		if(result != null && result.getEmail().equals(customer.getEmail())){
+			System.out.println("찾기성공");
 			return SUCCESS;
-		}else{
+		}else if(result == null || !result.getEmail().equals(customer.getEmail())){
+			System.out.println("찾은데이터 : "+result.getEmail());
+			System.out.println("입력이메일 : "+customer.getEmail());
+			System.out.println("비교결과" +result.getEmail().equals(customer.getEmail()));
+			System.out.println("입력이르음 : "+customer.getName());
+			System.out.println("찾기실패");
 			return ERROR; 
-		}
+		}else{ 
+			System.out.println("뭐냐 이 상황");
+			return SUCCESS;}
 		
 	}
 

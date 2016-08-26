@@ -13,6 +13,8 @@ IDNO VARCHAR2(20) UNIQUE,
 ADDRESS VARCHAR2(100)
 );
 
+
+
 <!-- 제약조건 추가 --> 
 alter table CUSTOMER add primary key (CUSTID)
 
