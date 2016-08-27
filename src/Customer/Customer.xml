@@ -38,27 +38,7 @@
 
 	</package>
 
-	<package name="main" namespace="/" extends="basic">
-		
-<default-interceptor-ref name="loginInterceptorStack"></default-interceptor-ref>
 
-
-	
-		<action name="haveaccount">
-		<interceptor-ref name="loginInterceptorStack"/>
-			<result>./page/haveaccount.jsp</result>
-		</action>
-		<action name="addaccount_1">
-			<result>./account/addaccount_1.jsp</result>
-		</action>
-		<action name="addaccount_2">
-			<result>./account/addaccount_2.jsp</result>
-		</action>
-
-		<action name="addaccount_3">
-			<result>./account/addaccount_3.jsp</result>
-		</action>
-	</package>
 
 
 	<package name="login" namespace="/" extends="basic">

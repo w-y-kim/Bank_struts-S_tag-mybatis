@@ -7,7 +7,9 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
-
+	<!-- JSP에서 static 메소드 EL로 호출위한 설정 -->
+<!-- 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+ -->
 
 
 	<package name="basic" namespace="/" extends="struts-default">
@@ -41,6 +43,7 @@
 
 
 	<include file="Customer/Customer.xml" />
+	<include file="Account/Account.xml" />
 	<include file="Board/Board.xml" />
 
 	<!-- Add packages here -->

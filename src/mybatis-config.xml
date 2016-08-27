@@ -9,6 +9,8 @@
 	<typeAliases>
 		<!-- type은 java 파일 경로 , alias는 별칭 UserMapper에서 사용 -->
 		<typeAlias alias="Customer" type="sesschool.bank.vo.Customer" />
+		<typeAlias alias="Account" type="sesschool.bank.vo.Account" />
+		<typeAlias alias="Board" type="sesschool.bank.vo.QnaBoard" />
 	</typeAliases>
 
 
@@ -28,6 +30,7 @@
 	<!-- SQL문 정의한 파일 포함 -->
 	<mappers>
 		<mapper resource="mapper/testMapper.xml" />
+		<mapper resource="mapper/AccountMapper.xml" />
 	</mappers>
 
 </configuration>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+
+
+	<package name="acc" namespace="/" extends="basic">
+
+		<default-interceptor-ref name="loginInterceptorStack"></default-interceptor-ref>
+
+		<action name="addaccount_1" class="sesschool.bank.action.AccountAction">
+			<result name="success">./account/addaccount_1.jsp</result>
+		</action>
+		<action name="addaccount_2" class="sesschool.bank.action.AccountAction">
+			<result name="success">./account/addaccount_2.jsp</result>
+		</action>
+
+		<action name="addaccount_3" class="sesschool.bank.action.AccountAction">
+			<result name="success">./account/addaccount_3.jsp</result>
+		</action>
+
+
+		<action name="haveaccount" class="sesschool.bank.action.AccountAction"
+			method="haveAccount">
+			<result name="success">./page/haveaccount.jsp</result>
+		</action>
+		<action name="accountResult_1" class="sesschool.bank.action.AccountAction"
+			method="account1">
+			<result name="success">./page/haveaccount.jsp</result>
+		</action>
+		<action name="accountResult_2" class="sesschool.bank.action.AccountAction"
+			method="account2">
+			<result name="success">./page/haveaccount.jsp</result>
+		</action>
+		<action name="accountResult_3" class="sesschool.bank.action.AccountAction"
+			method="account3">
+			<result name="success">./page/haveaccount.jsp</result>
+		</action>
+
+
+	</package>
+
+
+
+
+</struts>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="acc">
+
+	<!-- join액션에서 실행할 mybatis mapper / insert는 resultType이 필요없음 -->
+	<insert id="insertAccount" parameterType="Account">
+		INSERT INTO ACCOUNT VALUES(#{accountno},#{custid},#{accounttype},#{balance},#{payment},#{interest},#{startdeposit},#{enddeposit},#{approval})
+	</insert>
+
+	<select id="selectAccount" parameterType="String" resultType="Account">
+		SELECT * FROM ACCOUUNT WHERE CUSTID = #{custid}
+	</select>
+
+	<select id="selectAccount2" parameterType="Account" resultType="Account">
+				
+	</select>
+
+
+	<update id="updateAccount" parameterType="Account">
+
+	</update>
+
+</mapper>
