@@ -5,7 +5,29 @@
 
 <struts>
 
-
+ <package name="btn" namespace="/" extends="basic">
+	<action name="deposit"><result>./page/deposit.jsp</result></action>
+	<action name="withdraw"><result>./page/withdraw.jsp</result></action>
+	<action name="transfer"><result>./page/transfer.jsp</result></action>
+	<action name="transferlist"><result>./page/transferlist.jsp</result></action>
+	<action name="loan"><result>./page/loan.jsp</result></action>
+	
+	<action name="depositResult" class="sesschool.bank.action.AccountAction" method="deposit">
+	<result name="success" type="redirect">haveaccount.action</result> 
+	</action>
+	<action name="withdrawResult" class="sesschool.bank.action.AccountAction" method="withdraw">
+	<result name="success" type="redirect">haveaccount.action</result> 
+	</action>
+	<action name="transferResult" class="sesschool.bank.action.AccountAction" method="transfer">
+	<result name="success" type="redirect">haveaccount.action</result> 
+	</action>
+	<action name="transferListResult" class="sesschool.bank.action.AccountAction" method="transferList">
+	<result name="success" type="redirect">haveaccount.action</result> 
+	</action>
+	<action name="loanResult" class="sesschool.bank.action.AccountAction" method="loan">
+	<result name="success" type="redirect">haveaccount.action</result> 
+	</action>
+ </package>
 
 
 	<package name="acc" namespace="/" extends="basic">
@@ -24,21 +46,30 @@
 		</action>
 
 
-		<action name="haveaccount" class="sesschool.bank.action.AccountAction"
-			method="haveAccount">
+		<action name="haveaccount" class="sesschool.bank.action.AccountAction" method="haveAccount">
 			<result name="success">./page/haveaccount.jsp</result>
 		</action>
-		<action name="accountResult_1" class="sesschool.bank.action.AccountAction"
-			method="account1">
-			<result name="success">./page/haveaccount.jsp</result>
+
+		<action name="accountResult_1" class="sesschool.bank.action.AccountAction" method="account1">
+			<result name="success" type="chain">
+				<param name="actionName">haveaccount</param>
+				<param name="namespace">/</param>
+			</result>
 		</action>
+		
 		<action name="accountResult_2" class="sesschool.bank.action.AccountAction"
 			method="account2">
-			<result name="success">./page/haveaccount.jsp</result>
+			<result name="success" type="chain">
+				<param name="actionName">haveaccount</param>
+				<param name="namespace">/</param>
+			</result>
 		</action>
 		<action name="accountResult_3" class="sesschool.bank.action.AccountAction"
 			method="account3">
-			<result name="success">./page/haveaccount.jsp</result>
+			<result name="success" type="chain">
+				<param name="actionName">haveaccount</param>
+				<param name="namespace">/</param>
+			</result>
 		</action>
 
 

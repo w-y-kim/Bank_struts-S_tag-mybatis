@@ -6,10 +6,7 @@
 <struts>
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
-	<constant name="struts.devMode" value="true" />
-	<!-- JSP에서 static 메소드 EL로 호출위한 설정 -->
-<!-- 	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
- -->
+	<constant name="struts.devMode" value="false" />
 
 
 	<package name="basic" namespace="/" extends="struts-default">
@@ -22,17 +19,17 @@
 				class="sesschool.bank.interceptor.AdminInterceptor"></interceptor>
 
 			<interceptor-stack name="loginInterceptorStack">
-				<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="logininterceptor"></interceptor-ref>
 			</interceptor-stack>
 			<interceptor-stack name="adminInterceptorStack">
-				<!-- <interceptor-ref name="defaultStack"></interceptor-ref> -->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
 				<interceptor-ref name="admininterceptor"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 
-		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
-
+<!-- 		<default-interceptor-ref name="defaultStack"></default-interceptor-ref>
+ -->
 
 
 		<global-results>

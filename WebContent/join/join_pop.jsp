@@ -39,7 +39,7 @@
 
 		<form action="join_pop_Result.action" name="popform">
 			<p class="list_btn">
-				<input type="text" id="txt" class="wr_idcheck" name="customer.custid"  value="${param.param}" /> <a
+				<input type="text" id="txt" class="wr_idcheck" name="custid"  value="${param.param}" /> <a
 					href="javascript:popform.submit();">중복확인</a>
 			</p>
 		</form>

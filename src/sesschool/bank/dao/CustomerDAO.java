@@ -31,7 +31,7 @@ public class CustomerDAO {
 		SqlSession sqlSess = sqlSessFac.openSession();
 		try {
 			result = sqlSess.selectOne("cus.selectCus", str); 
-			sqlSess.commit();
+//			sqlSess.commit();//셀렉트는 필요없음
 		} catch (Exception e) {
 			e.printStackTrace(); 
 		} finally {
@@ -47,7 +47,7 @@ public class CustomerDAO {
 		try {
 			result = (Customer)sqlSess.selectOne("cus.selectCus2", customer); 
 			System.out.println("mapper결과 : " +result);
-			sqlSess.commit();
+//			sqlSess.commit();
 		} catch (Exception e) {
 			e.printStackTrace(); 
 		} finally {

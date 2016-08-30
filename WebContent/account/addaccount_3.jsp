@@ -54,22 +54,34 @@
 
 
 		<div id="contents"><!--내용-->
+		
+		<form action="accountResult_1.action" name="myform" method="post">
 			<h1>신규계좌 개설<span>대출계좌정보를 입력해 주세요</span></h1><!-- 내용제목 -->
 			<ul class="basic_list">
 			
 				<!-- 대출계좌 -->
 				<li><span>&#47; 계좌구분</span>대출계좌</li>
-				<li><span>&#47; 계좌번호</span><input type="text" class="wr_account" placeholder="2354-258-25891" /> <!-- <a href="#">계좌번호 발급</a> --></li>
-				<li><span>&#47; 대출금액</span><input type="text" class="wr_account" /></li>
-				<li><span>&#47; 대출기간</span><input type="radio" name="years" checked />1년 <input type="radio" name="years" />2년 <input type="radio" name="years" />3년</li>
+				<li><span>&#47; 계좌번호</span><input type="text" class="wr_account" value="${accountno}" name="account.accountno" /> <!-- <a href="#">계좌번호 발급</a> --></li>
+				<li><span>&#47; 대출금액</span><input type="text" class="wr_account" name="account.payment"/></li>
+				<li><span>&#47; 대출기간</span><input type="radio" name="account.term"  value="1" checked />1년 <input type="radio" name="account.term"  value="2" />2년 <input type="radio" name="account.term"  value="3" />3년</li>
+				
 
 
 
 			</ul>
 
 			<p class="list_btn">
-				<a href="#" class="select">계좌개설</a>
+				<input type="hidden" name="account.custid" value="${LOGIN_ID}">
+				<input type="hidden" name="account.accounttype" value="loan">
+				<input type="hidden" name="account.interest" value="0">
+				<input type="hidden" name="account.startdeposit" value="">
+				<input type="hidden" name="account.enddeposit" value="">
+				<input type="hidden" name="account.approval" value="N">
+					<a href="javascript:myform.submit()" class="select">계좌개설</a>
+				
+				
 			</p>
+		</form>
 			<p class="extext">
 			※ 대출계좌는 승인 완료 후 계좌현황에서 확인하실 수 있습니다
 			</p>

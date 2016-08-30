@@ -67,22 +67,23 @@
 				</h1>
 				<!-- 내용제목 -->
 				<ul class="basic_list">
-					<!-- 예금계좌 -->
+					<!-- 예금계좌 --> 
 					<li><span>&#47; 계좌구분</span>예금계좌</li>
-					<li><span>&#47; 계좌번호</span><input type="text"
+					<li><span>&#47;  계좌번호</span><input type="text"
 						class="wr_account" value="${accountno}" name="account.accountno" /> <!-- <a href="#">계좌번호 발급</a> --></li>
 					<li><span>&#47; 초기잔고</span><input type="text"
 						class="wr_account" name="account.balance" /></li>
 				</ul>
 
 				<p class="list_btn">
-				<input type="hidden" name="account.custid" value="%{#LOGIN_ID}">
+				<input type="hidden" name="account.custid" value="${LOGIN_ID}">
 				<input type="hidden" name="account.accounttype" value="checking">
 				<input type="hidden" name="account.payment" value="0">
 				<input type="hidden" name="account.interest" value="0">
 				<input type="hidden" name="account.startdeposit" value="">
 				<input type="hidden" name="account.enddeposit" value="">
-				<input type="hidden" name="account.approval" value="0">
+				<input type="hidden" name="account.approval" value="N">
+				<input type="hidden" name="account.term" value="0">
 					<a href="javascript:myform.submit()" class="select">계좌개설</a>
 				</p>
 

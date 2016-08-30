@@ -1,7 +1,11 @@
 package sesschool.bank.dao;
 
+
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import sesschool.bank.vo.Account;
 
@@ -11,6 +15,8 @@ public class AccountDAO {
 	
 	
 	public AccountDAO() {
+		
+		
 	}
 	
 	
@@ -33,11 +39,33 @@ public class AccountDAO {
 		
 		}
 
-	public Account selectAccount(String str) {
-		System.out.println("DAO.selectAccount 들어옴");
+	public Account searchAccount(String str) {
+		System.out.println("DAO.searchAccount 들어옴");
 		Account result = null;
-	
+		
 		return result;
+	}
+	
+	
+	public List<Account> getAccountList(String str){
+		System.out.println("DAO.getAccountList 들어옴");
+		List<Account> result = null; 
+		ss = sqlSessFac.openSession(); 
+		try{
+		result = (List) ss.selectList("acc.selectAccount2", str); 
+//		ss.commit();//셀렉트는 필요없음
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(ss!=null)ss.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+		
 	}
 	
 /*	
