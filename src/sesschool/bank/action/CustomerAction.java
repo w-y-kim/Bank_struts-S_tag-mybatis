@@ -107,11 +107,13 @@ public class CustomerAction extends ActionSupport implements SessionAware{
 
 	public String login() {
 		System.out.println("CustomerAction.login()");
+		if(custid == null){custid=customer.getCustid();}
+		if(password == null){password = customer.getPassword();}
 		customer = dao.selectCustomer(custid);
 		System.out.println(customer);
 		if(customer == null||customer.getPassword().equals(password) == false){
 			System.out.println("비밀번호 불일치");
-			return ERROR;  
+			return ERROR; 
 		}else{
 			System.out.println("로그인성공" +customer);
 			//세션저장해야함

@@ -1,5 +1,6 @@
 package sesschool.bank.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -74,46 +75,89 @@ public String execute() {
 	//버튼을 위한 액션 메소드
 	public String deposit(){
 		System.out.println("AccountAction.deposit()");
+		System.out.println("입금계좌 : "+account.getAccountno()+" 입금금액 : " + account.getPayment());
+		int result = dao.updateAccount(account);
+		if(result == 0){ return ERROR;}
 		return SUCCESS; 
 	}
 	public String withdraw(){
 		System.out.println("AccountAction.withdraw()");
+		int result = dao.updateAccount(account);
+		if(result == 0){ return ERROR;}
 		return SUCCESS; 
 	}
 	public String transfer(){
 		System.out.println("AccountAction.transfer()");
 		return SUCCESS; 
 	}
-	public String transferList(){
-		System.out.println("AccountAction.transferList()");
+	public String tradeList(){
+		System.out.println("AccountAction.tradeList()");
 		return SUCCESS; 
 	}
-	public String loan(){
+	public String myloan(){
 		System.out.println("AccountAction.loan()");
+		
+		account.setTerm("withdraw");
+		int result1 = dao.updateAccount(account);//출금되는 계좌 
+		account.setTerm("loan");
+		account.setAccountno(accountno);//상환을 당할 계좌번호 (입금)
+		
+		
+		int result2 = dao.updateAccount(account);//
+		System.out.println("result1"+result1);
+		System.out.println("result2"+result2);
+		if(result1 == 0 && result2 ==0){
+			return ERROR;
+		}
+		
+		
 		return SUCCESS; 
 	}
+	public String transfer_pop(){
+		System.out.println("AccountAction.tranfer_pop()");
+		accountList = (List<Account>) dao.getAccountList((String)session.get("LOGIN_ID")); 
+		System.out.println(accountList);
+		
+		return SUCCESS;
+	}
 	
-	
+	public String transfer_pop1(){
+		System.out.println("AccountAction.transfer_pop1()");
+		
+		return SUCCESS;
+	}
+	public String transfer_pop2(){
+		System.out.println("AccountAction.transfer_pop2()");
+		account = dao.searchAccount(accountno); 
+		return SUCCESS;
+	}
+	public String loan_pop(){
+		System.out.println("AccountAction.loan_pop()");
+		 List<Account> myAllList = (List<Account>) dao.getAccountList((String)session.get("LOGIN_ID"));
+		 accountList = new ArrayList<Account>();
+		for (Account account : myAllList) {
+			if(account.getAccounttype().equals("checking")){
+				accountList.add(account);
+			}
+		}
+		return SUCCESS; 
+	}
 	
 	
 //getter & setter
 	public Account getAccount() {
-		System.out.println("GETTER");
 		return account;
 	}
 
 	public void setAccount(Account account) {
-		System.out.println("ACCOUNT ACTION ACCOUNT.SETTER"+account);
 		this.account = account;
 	}
 	
 	public String getAccountno() {
-		System.out.println("no getter");
 		return accountno;
 	}
 
 	public void setAccountno(String accountno) {
-		System.out.println("no setter:" + accountno);
 		this.accountno = accountno;
 	}
 

@@ -58,14 +58,15 @@
 			<h1>출금<span>출금정보를 입력해 주세요</span></h1><!-- 내용제목 -->
 			<ul class="basic_list">
 				<li><span>&#47; 계좌구분</span> 예금계좌</li>
-				<li><span>&#47; 계좌번호</span><input type="text" class="wr_account"  value="${param.mychoice}" /></li>
-				<li><span>&#47; 출금금액</span><input type="text" class="wr_account" /></li>
+				<li><span>&#47; 계좌번호</span><input type="text" class="wr_account"  name="account.accountno" value="${param.mychoice}" /></li>
+				<li><span>&#47; 출금금액</span><input type="text" class="wr_account" name="account.payment" /></li>
 			</ul>
 
 			<p class="list_btn">
 				<a href="javascript:history.go(-1)">이전</a><a href="javascript:myform.submit()" class="select">출금</a>
 			</p>
-		
+				<input type="hidden" name="account.custid" value="${LOGIN_ID}">
+				<input type="hidden" name="account.term" value="withdraw">
 </form>
 
 		</div>

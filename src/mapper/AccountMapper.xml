@@ -18,8 +18,22 @@
 	</select>
 
 
-	<update id="updateAccount" parameterType="Account">
+	<update id="updateAccount" parameterType="Account" >
+	<if test="term == 'deposit'">
+		UPDATE ACCOUNT SET BALANCE = BALANCE+#{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
+	</if>
 
+	<if test="term == 'withdraw'">
+		UPDATE ACCOUNT SET BALANCE = BALANCE-#{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
+	</if>
+	<if test="term == 'loan'">
+		UPDATE ACCOUNT SET BALANCE = BALANCE + #{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
+	</if>
+	</update>
+	
+	
+	<update id="updateAccount2" parameterType="Account">
+		UPDATE ACCOUNT SET BALANCE = BALANCE-#{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
 	</update>
 
 </mapper>

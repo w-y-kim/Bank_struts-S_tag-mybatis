@@ -51,11 +51,15 @@
 
 		</div>
 
-
+<script type="text/javascript">
+function setChildValue(name){
+    var parma = document.getElementById('withdraw_account').value = name;
+}
+</script>
 
 		<div id="contents">
 			<!--내용-->
-			<form action="loanResult.action" name="myform" method="post">
+			<form action="loanResult.action" name="myform" method=post>
 			<h1>
 				대출상환<span>상환정보를 입력해 주세요</span>
 			</h1>
@@ -63,19 +67,22 @@
 			<ul class="basic_list">
 				<li><span>&#47; 계좌구분</span> 대출계좌</li>
 				<li><span>&#47; 계좌번호</span><input type="text"
-					class="wr_account" value="${param.mychoice}" /></li>
-				<li><span>&#47; 출금계좌번호</span><input type="text"
-					class="wr_account" placeholder="2354-258-25891" /><a href="#"
-					onclick="window.open('loan_pop.action','pop','resizable=no scrollbars=yes top=300 left=500 width=500 height=300');return false">조회</a></li>
+					class="wr_account" value="${param.mychoice}" name="account11" /></li>
+				<li><span>&#47; 출금계좌번호</span>
+				<input type="text" class="wr_account" id="withdraw_account" name="account.accountno" />
+					
+				<a href="#" onclick="window.open('loan_pop.action','pop','resizable=no scrollbars=yes top=300 left=500 width=500 height=300');return false">조회</a></li>
 				<li><span>&#47; 상환금액</span><input type="text"
-					class="wr_account" /></li>
+					class="wr_account" name="account.payment" /></li>
 			</ul>
+				<input type="hidden" name="account.custid" value="${LOGIN_ID}">
+				<input type="hidden" name="account.term" value="loan">
 
+				
 			<p class="list_btn">
 					<a href="javascript:history.go(-1)">이전</a><a href="javascript:myform.submit()" class="select">대출상환</a>
 
 			</p>
-
 			</form>
 
 		</div>

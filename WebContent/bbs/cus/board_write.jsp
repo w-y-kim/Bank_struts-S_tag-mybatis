@@ -55,6 +55,7 @@
 
 		<div id="contents"><!--내용-->
 			<h1>고객문의 게시판<span></span></h1><!-- 내용제목 -->
+			<form id="writeForm" action="insertBoard" method="post" enctype=""></form>
 			
 			<table class="wr_board">
 				<tr>
@@ -73,7 +74,7 @@
 				</tr>
 				<tr>
 					<th>첨부파일</th>
-					<td><input type="file" /></td>
+					<td><s:file type="file" name="upload" /></td>
 				</tr>
 			
 			</table>

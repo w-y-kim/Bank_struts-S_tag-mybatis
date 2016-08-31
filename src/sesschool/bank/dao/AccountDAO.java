@@ -78,8 +78,22 @@ public class AccountDAO {
 	}
 */	
 	
-	public int updateCustomer(Account account) {
+	public int updateAccount(Account account) {
+		System.out.println("AccountDAO.updateAccount() : "+ account );
 		int result = 0;
+		ss = sqlSessFac.openSession(); 
+		try{
+		result = ss.update("acc.updateAccount", account); 
+		ss.commit();//셀렉트는 필요없음
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(ss!=null)ss.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 		
 		

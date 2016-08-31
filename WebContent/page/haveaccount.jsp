@@ -99,10 +99,12 @@
 			</table>
 			<script type="text/javascript">
 				function chk_radio(uri) {
-					var num_temp = document.all.mychoice.length;
+					var elements = document.getElementsByName("mychoice");
+					var num_temp = document.getElementsByName("mychoice").length;
+				
 					for (i = 0; i < num_temp; i++) {
-						if (document.all.mychoice[i].checked == true) {
-							var chkVal = document.all.mychoice[i].value
+						if (elements[i].checked == true) {
+							var chkVal = elements[i].value;
 							location.href = uri + chkVal;
 							break;
 						}

@@ -1,37 +1,51 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE struts PUBLIC
-	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
-	"http://struts.apache.org/dtds/struts-2.3.dtd">
+   "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+   "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="true" />
 
+	<package name="defaultAction" namespace="/" extends="basic">
 
-	<package name="adm" namespace="/" extends="struts-default">
-		<action name="adm_answerlist" class="sesschool.bank.action.BoardAction" method="answerlist">
-			<result name="success">./bbs/adm/adm_answerlist.jsp</result>
-		</action>
-		<action name="adm_answerview" class="sesschool.bank.action.BoardAction" method="answerview">
-			<result name="success">./bbs/adm/adm_answerview.jsp</result>
-		</action>
-		<action name="adm_loan" class="sesschool.bank.action.BoardAction" method="loan">
-			<result name="success">./bbs/adm/adm_loan.jsp</result>
-		</action>
+		<action name="BoardList"> <result>/bbs/cus/board_list.jsp</result> </action>
+		<action name="BoardView"> <result>/bbs/cus/board_view.jsp</result> </action>
+		<action name="BoardWrite"> <result>/bbs/cus/board_write.jsp</result> </action>
 
 	</package>
 
-	<package name="cus" namespace="/" extends="struts-default">
-		
-		<action name="board_list" class="sesschool.bank.action.BoardAction" method="list">
-			<result name="success">./bbs/cus/board_list.jsp</result>
-		</action>
-		<action name="board_view" class="sesschool.bank.action.BoardAction" method="view">
-			<result name="success">./bbs/cus/board_view.jsp</result>
-		</action>
-		<action name="board_write" class="sesschool.bank.action.BoardAction" method="write">
-			<result name="success">./bbs/cus/board_write.jsp</result>
-		</action>	
+	<package name="listAction" namespace="/" extends="basic">
 
+		<action name="insertBoard" class="sesschool.bank.action.BoardAction" method="insertBoard">
+			<result>/board_list.jsp</result>
+		</action>
 	</package>
 
+	<package name="viewAction" namespace="/" extends="basic">
+	</package>
+	
+	<package name="writeAction" namespace="/" extends="basic">
+	</package>
 
+	
+	<!-- 파일 다운로드 액션 패키지-->
+	<package name="download" extends="basic">
+		<action name="fileDownload" class="sesschool.bank.action.FileDownloadAction">
+			<result name="success">
+				<param name="contentType">${contentType}</param>
+				<param name="contentLength">${contentLength}</param>
+				<param name="contentDisposition">${contentDisposition}</param><!-- 브라우저에서 바로 열려면 안써야함 혹은 그 반대였던듯ㅋㅋ-->
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+	</package>
+	
+	
 </struts>
+
+
+    
+  

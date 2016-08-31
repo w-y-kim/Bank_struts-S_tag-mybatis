@@ -51,6 +51,12 @@
 			
 		</div>
 
+<script type="text/javascript">
+/* 자식창(팝업창)에서 받아온 값 넣기*/
+function setChildValue(name){
+    document.getElementById('exaccnt').value = name;
+}
+</script>
 
 
 		<div id="contents"><!--내용-->
@@ -59,11 +65,12 @@
 			<h1>이체<span>이체정보를 입력해 주세요</span></h1><!-- 내용제목 -->
 			<ul class="basic_list">
 				<li><span>&#47; 계좌구분</span> 예금계좌</li>
-				<li><span>&#47; 출금계좌번호</span><input type="text" class="wr_account" placeholder="2354-258-25891" /></li>
+				<li><span>&#47; 출금계좌번호</span><input type="text" class="wr_account" value="${param.mychoice}" name="account.accountno"  ReadOnly /></li>
 				<li><span></span>
-				<input type="radio" checked name="add_account"onclick="window.open('transfer_pop1.action','pop','resizable=no scrollbars=yes top=300 left=500 width=500 height=300');return false"   />본인계좌 <input type="radio" name="add_account" onclick="window.open('transfer_pop2.action','pop','resizable=no scrollbars=yes top=300 left=500 width=400 height=250');return false" />타인계좌</li>
-				<li><span>&#47; 입금계좌번호</span><input type="text" class="wr_account" placeholder="2354-258-25891" /><!-- <a href="#">조회</a> --></li>
-				<li><span>&#47; 이체금액</span><input type="text" class="wr_account" /></li>
+				<input type="radio" checked name="add_account"
+				onclick="window.open('transfer_pop1.action','pop','resizable=no scrollbars=yes top=300 left=500 width=500 height=300');return false"   />본인계좌 <input type="radio" name="add_account" onclick="window.open('transfer_pop2.action','pop','resizable=no scrollbars=yes top=300 left=500 width=400 height=250');return false" />타인계좌</li>
+				<li><span>&#47; 입금계좌번호</span><input id="exaccnt" type="text" class="wr_account" name="accountno" value="${accountno}"/><!-- <a href="#">조회</a> --></li>
+				<li><span>&#47; 이체금액</span><input type="text" class="wr_account" name="account.payment" /></li>
 			</ul>
 
 			<p class="list_btn">
