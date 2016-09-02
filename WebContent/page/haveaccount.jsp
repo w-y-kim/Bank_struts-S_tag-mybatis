@@ -69,27 +69,21 @@
 					<th>계좌종류</th>
 					<th>계좌번호</th>
 					<th>잔고</th>
+					<th>상환금(월납입금)</th>
 					<th>납입(상환)기간</th>
 					<th>대출(이율)</th>
 				</tr>
 				<s:iterator value="accountList">
-					<!-- 				<tr>
-					<td><input type="radio" name="backingname" checked /></td>
-					<td>예금계좌</td>
-					<td>250</td>
-					<td>-</td>
-					<td></td>
-					<td></td>
-				</tr>
- -->
+
 					<tr>
 						<td><input type="radio" name="mychoice"
 							value="<s:property value="accountno"/>" /></td>
 						<td><s:property value="accounttype" /></td>
 						<td><s:property value="accountno" /></td>
-						<td><s:property value="balance" /></td>
-						<td><s:property value="startdeposit" /> ~ <s:property
-								value="enddeposit" /></td>
+						<td><s:if test="accounttype == 'checking'"> <s:property value="balance" /></s:if></td>
+						<td><s:if test="accounttype != 'checking'"><s:property value="balance" /></s:if></td>
+						<td><s:property value="startdeposit.substring(0,10)" /> ~ <s:property
+								value="enddeposit.substring(0,10)" /></td>
 						<td><s:property value="interest" /></td>
 					</tr>
 
@@ -116,7 +110,7 @@
 				<a href="#" onclick="chk_radio('deposit.action?mychoice=')">입금</a> <a
 					href="#" onclick="chk_radio('withdraw.action?mychoice=')">출금</a> <a
 					href="#" onclick="chk_radio('transfer.action?mychoice=')">이체</a> <a
-					href="#" onclick="chk_radio('transferlist.action?mychoice=')">거래내역</a>
+					href="#" onclick="chk_radio('tradelist.action?mychoice=')">거래내역</a>
 				<a href="#" onclick="chk_radio('loan.action?mychoice=')">대출상환</a>
 			</p>
 

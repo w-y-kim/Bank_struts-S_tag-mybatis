@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import sesschool.bank.vo.Account;
+import sesschool.bank.vo.AccountLog;
 
 public class AccountDAO {
 	private SqlSessionFactory sqlSessFac = MybatisConfig.getSqlSessionFactory();
@@ -15,8 +16,6 @@ public class AccountDAO {
 	
 	
 	public AccountDAO() {
-		
-		
 	}
 	
 	
@@ -42,7 +41,18 @@ public class AccountDAO {
 	public Account searchAccount(String str) {
 		System.out.println("DAO.searchAccount 들어옴");
 		Account result = null;
-		
+		ss = sqlSessFac.openSession(); 
+		try{
+			result = ss.selectOne("acc.selectAccount2", str); 
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(ss!=null)ss.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		return result;
 	}
 	
@@ -52,7 +62,7 @@ public class AccountDAO {
 		List<Account> result = null; 
 		ss = sqlSessFac.openSession(); 
 		try{
-		result = (List) ss.selectList("acc.selectAccount2", str); 
+		result = (List) ss.selectList("acc.selectAccount", str); 
 //		ss.commit();//셀렉트는 필요없음
 		}catch(Exception e){
 			e.printStackTrace();
@@ -94,12 +104,49 @@ public class AccountDAO {
 				e.printStackTrace();
 			}
 		}
-		
+		return result;
+	}
+	public int insertAccountLog(AccountLog acclog){
+		int result = 0;
+		System.out.println("AccountDAO.insertAccountLog()");
+		ss = sqlSessFac.openSession(); 
+		try{
+		result = ss.insert("acc.insertLog", acclog); 
+		ss.commit();//셀렉트는 필요없음
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{ 
+			try{
+				if(ss!=null)ss.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+
+
+	public List<AccountLog> selectLog(Account account) {
+		List<AccountLog> result = null; 
+		ss = sqlSessFac.openSession(); 
+		System.out.println(account+"selectLog");
+		try{
+		result = (List) ss.selectList("acc.selectLog", account); 
+		System.out.println("AccountDAO.selectLog() : "+result);
+//		ss.commit();//셀렉트는 필요없음
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try{
+				if(ss!=null)ss.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 		
 		return result;
-
+		
 	}
-
 	
 }

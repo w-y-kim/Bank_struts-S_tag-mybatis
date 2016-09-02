@@ -67,7 +67,7 @@
 					class="wr_account" value="${accountno}" name="account.accountno" />
 					<!-- <a href="#">계좌번호 발급</a> --></li>
 				<li><span>&#47; 월 납입금</span>
-				<input type="text" class="wr_account" name="account.payment"/></li>
+				<input type="text" class="wr_account" name="account.balance"/></li>
 				<li><span>&#47; 납입기간</span>
 				<input type="radio" name="account.term" value="1" checked />1년 
 				<input type="radio" name="account.term" value="2"/>2년 

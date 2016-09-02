@@ -67,7 +67,7 @@ function setChildValue(name){
 			<ul class="basic_list">
 				<li><span>&#47; 계좌구분</span> 대출계좌</li>
 				<li><span>&#47; 계좌번호</span><input type="text"
-					class="wr_account" value="${param.mychoice}" name="account11" /></li>
+					class="wr_account" value="${param.mychoice}" name="accountno" /></li>
 				<li><span>&#47; 출금계좌번호</span>
 				<input type="text" class="wr_account" id="withdraw_account" name="account.accountno" />
 					

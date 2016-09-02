@@ -116,7 +116,8 @@
 					<a
 						href="javascript:pagingFormSubmit(<s:property value="#counter"/>)"
 						<s:if test="#counter == pagenavi.currentPage">class="select"</s:if>>
-						<!-- 내가 보고있는 것과 같은 경우만 class 부여 --> <s:property value=#counter />
+						<!-- 내가 보고있는 것과 같은 경우만 class 부여 --> 
+						<%-- <s:property value=#counter /> --%>
 					</a>&nbsp;
 				</s:iterator>
 				<a href="javascript:pagingFormSubmit(${pagenavi.currentPage +1})">&gt;</a>
@@ -145,7 +146,7 @@
 				<p class="board_search">
 				<s:hidden id="currentPage" value="%{pagenavi.currentPage}"/>
 				<s:select name="searchField" list="#{'title':'제목','content':'내용'}"></s:select>
-				<s:textfield name="searchText"><a href="javascript:pagingFormSubmit(1)">검색</a>  </s:textfield>
+				<s:textfield name="searchText"> </s:textfield>&nbsp<a href="javascript:pagingFormSubmit(1)">검색</a>
 				</p>
 			</s:form>
 

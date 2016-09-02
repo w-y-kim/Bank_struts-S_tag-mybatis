@@ -5,35 +5,75 @@
 
 	<!-- join액션에서 실행할 mybatis mapper / insert는 resultType이 필요없음 -->
 	<insert id="insertAccount" parameterType="Account">
-		INSERT INTO ACCOUNT 
-		VALUES(#{accountno},#{custid},#{accounttype},#{balance},#{payment},#{interest},SYSDATE,SYSDATE+(#{term}*365),#{approval})
+		INSERT INTO ACCOUNT
+		VALUES(#{accountno},#{custid},#{accounttype},#{balance},#{payment},#{interest},TRUNC(SYSDATE,'DD'),TRUNC(SYSDATE)+(#{term}*365),#{approval})
 	</insert>
 
 	<select id="selectAccount" parameterType="String" resultType="Account">
 		SELECT * FROM ACCOUNT WHERE CUSTID = #{custid}
+
 	</select>
 
-	<select id="selectAccount2" parameterType="Account" resultType="Account">
-		SELECT * FROM ACCOUNT WHERE CUSTID = #{custid}		
+	<select id="selectAccount2" parameterType="String" resultType="Account">
+		SELECT * FROM ACCOUNT WHERE ACCOUNTNO = #{accountno}
 	</select>
 
+	<update id="updateAccount" parameterType="Account">
+		<if test="term == 'deposit'">
+			UPDATE ACCOUNT SET BALANCE = BALANCE+#{payment} WHERE ACCOUNTNO =
+			#{accountno} AND CUSTID = #{custid}
+		</if>
 
-	<update id="updateAccount" parameterType="Account" >
-	<if test="term == 'deposit'">
-		UPDATE ACCOUNT SET BALANCE = BALANCE+#{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
-	</if>
-
-	<if test="term == 'withdraw'">
-		UPDATE ACCOUNT SET BALANCE = BALANCE-#{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
-	</if>
-	<if test="term == 'loan'">
-		UPDATE ACCOUNT SET BALANCE = BALANCE + #{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
-	</if>
+		<if test="term == 'withdraw'">
+			UPDATE ACCOUNT SET BALANCE = BALANCE-#{payment} WHERE ACCOUNTNO =
+			#{accountno} AND CUSTID = #{custid}
+		</if>
+		<if test="term == 'loan'">
+			UPDATE ACCOUNT SET BALANCE = BALANCE + #{payment} WHERE ACCOUNTNO =
+			#{accountno} AND CUSTID = #{custid}
+		</if>
 	</update>
-	
-	
+
+
 	<update id="updateAccount2" parameterType="Account">
-		UPDATE ACCOUNT SET BALANCE = BALANCE-#{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID = #{custid}
+		UPDATE ACCOUNT SET
+		BALANCE = BALANCE-#{payment} WHERE ACCOUNTNO = #{accountno} AND CUSTID
+		= #{custid}
 	</update>
+
+	<insert id="insertLog" parameterType="AccountLog">
+		INSERT INTO ACCOUNTLOG
+		VALUES(ACCOUNTLOG_SEQ.nextval,#{custid},#{accountno},#{transferno},SYSDATE,#{eventtype},#{eventrecord},#{amount},#{balance})
+	</insert>
+	
+	<select id="selectLog" parameterType="Account" resultType="AccountLog">
+	<if test="accounttype == 'all'">
+		<if test="term == 'edge'">
+<!-- 		SELECT * FROM ACCOUNTLOG WHERE CUSTID=#{custid} AND EVENTDATE >= #{startdeposit} AND #{enddeposit} >= EVENTDATE ORDER BY LOGID DESC  -->
+		SELECT * FROM ACCOUNTLOG WHERE CUSTID=#{custid} AND EVENTDATE BETWEEN TO_DATE(#{startdeposit}) AND TO_DATE(#{enddeposit})+0.99999 ORDER BY LOGID DESC 
+		</if>
+		<if test="term == 'post'">
+		SELECT * FROM ACCOUNTLOG WHERE CUSTID=#{custid} AND EVENTDATE BETWEEN TO_DATE(#{startdeposit}) AND TO_DATE(#{enddeposit})+0.99999 ORDER BY LOGID ASC
+		</if>
+	</if>
+	<if test="accounttype == 'deposit'">
+		<if test="term == 'edge'">
+		SELECT * FROM ACCOUNTLOG WHERE CUSTID=#{custid} AND EVENTTYPE='deposit' AND EVENTDATE BETWEEN TO_DATE(#{startdeposit}) AND TO_DATE(#{enddeposit})+0.99999 ORDER BY LOGID DESC 
+		</if>
+		<if test="term == 'post'">
+		SELECT * FROM ACCOUNTLOG WHERE CUSTID=#{custid} AND EVENTTYPE ='deposit' AND EVENTDATE BETWEEN TO_DATE(#{startdeposit}) AND TO_DATE(#{enddeposit})+0.99999 ORDER BY LOGID ASC
+		</if>
+	</if>
+	<if test="accounttype == 'withdraw'">
+		<if test="term == 'edge'">
+		SELECT * FROM ACCOUNTLOG WHERE CUSTID=#{custid} AND EVENTTYPE='withdraw' AND EVENTDATE BETWEEN TO_DATE(#{startdeposit}) AND TO_DATE(#{enddeposit})+0.99999 ORDER BY LOGID DESC 
+		</if>
+		<if test="term == 'post'">
+		SELECT * FROM ACCOUNTLOG WHERE CUSTID=#{custid} AND EVENTTYPE='withdraw' AND EVENTDATE BETWEEN TO_DATE(#{startdeposit}) AND TO_DATE(#{enddeposit})+0.99999 ORDER BY LOGID ASC
+		</if>
+	</if>
+	
+	</select>
+
 
 </mapper>

@@ -158,7 +158,7 @@ table.vw_board tr:hover {background:none !important;}
 .extext {padding-top:30px;}
 
 
-.basic_list li .wr_date {width:100px; border:1px solid #ddd; padding-left:10px;}
+.basic_list li .wr_date {width:120px; border:1px solid #ddd; padding-left:10px;}
 .board_search select {width:80px; border:1px solid #ddd; font-size:12px; padding:3px 0;}
 .board_search input {width:150px; border:1px solid #ddd; padding-left:10px; height:19px;}
 .board_search a {display:inline-block; width:50px; border:1px solid #ddd; padding:3px 0 4px 0;}

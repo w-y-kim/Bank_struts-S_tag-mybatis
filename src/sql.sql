@@ -16,6 +16,8 @@ IDNO VARCHAR2(20) UNIQUE,
 ADDRESS VARCHAR2(100)
 );
 
+delete from ACCOUNT;
+delete from ACCOUNTLOG;
 
 
 

@@ -84,6 +84,4 @@ public class Account {
 				+ ", enddeposit=" + enddeposit + ", term=" + term + ", approval=" + approval + "]";
 	} 
 	
-	
-	
 }

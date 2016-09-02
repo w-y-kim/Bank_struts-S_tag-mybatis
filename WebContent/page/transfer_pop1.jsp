@@ -30,11 +30,11 @@
 	<div class="popwrap">
 
 		<h2>입금계좌 선택</h2>
-		<form action="transfer_pop1_Result" name="myform" method="post">
 			<div style="">
 				<table>
 					<tr>
 						<th>선택</th>
+						<th>유형</th>
 						<th>계좌번호</th>
 						<th>잔고</th>
 					</tr>
@@ -44,6 +44,7 @@
 						<tr>
 							<td><input type="radio" name="accountno"
 								value="<s:property value="accountno"/>" /></td>
+							<td><s:property value="accounttype" /></td>
 							<td><s:property value="accountno" /></td>
 							<td><s:property value="balance" /></td>
 						</tr>

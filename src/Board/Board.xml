@@ -10,9 +10,9 @@
 
 	<package name="defaultAction" namespace="/" extends="basic">
 
-		<action name="BoardList"> <result>/bbs/cus/board_list.jsp</result> </action>
-		<action name="BoardView"> <result>/bbs/cus/board_view.jsp</result> </action>
-		<action name="BoardWrite"> <result>/bbs/cus/board_write.jsp</result> </action>
+		<action name="board_list"> <result>/bbs/cus/board_list.jsp</result> </action>
+		<action name="board_view"> <result>/bbs/cus/board_view.jsp</result> </action>
+		<action name="board_write"> <result>/bbs/cus/board_write.jsp</result> </action>
 
 	</package>
 

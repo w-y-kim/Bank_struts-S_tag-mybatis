@@ -12,7 +12,7 @@
 		<action name="withdraw">
 			<result>./page/withdraw.jsp</result>
 		</action>
-		<action name="transfer">
+		<action name="transfer" class="sesschool.bank.action.AccountAction" method="">
 			<result>./page/transfer.jsp</result>
 		</action>
 		<action name="tradelist">
@@ -59,20 +59,14 @@
 			method="transfer">
 			<result name="success" type="redirect">haveaccount.action</result>
 		</action>
-		<action name="transfer_pop1_Result" class="sesschool.bank.action.AccountAction"
-			method="transfer_pop1">
-			<result name="success">./page/transfer.jsp</result>
-		</action>
+
 		<action name="transfer_pop2_Result" class="sesschool.bank.action.AccountAction"
-			method="transfer_pop2">
-			<result name="success">./page/transfer.jsp</result>
+			method="transfer_pop2_Result">
+			<result name="success">./page/transfer_pop2.jsp</result>
 		</action>
 		<action name="tradeListResult" class="sesschool.bank.action.AccountAction"
 			method="tradeList">
-			<result name="success" type="chain">
-				<param name="actionName">haveaccount</param>
-				<param name="namespace">/</param>
-			</result>
+			<result name="success">./page/tradelist.jsp</result>
 		</action>
 
 

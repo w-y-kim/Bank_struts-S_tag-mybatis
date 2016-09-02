@@ -10,7 +10,9 @@
 		<!-- type은 java 파일 경로 , alias는 별칭 UserMapper에서 사용 -->
 		<typeAlias alias="Customer" type="sesschool.bank.vo.Customer" />
 		<typeAlias alias="Account" type="sesschool.bank.vo.Account" />
-		<typeAlias alias="Board" type="sesschool.bank.vo.QnaBoard" />
+		<typeAlias alias="AccountLog" type="sesschool.bank.vo.AccountLog" />
+		<typeAlias alias="Board" type="sesschool.bank.vo.Board" />
+
 	</typeAliases>
 
 
