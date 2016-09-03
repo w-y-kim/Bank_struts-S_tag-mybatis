@@ -1,24 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="acc">
+<mapper namespace="board">
 
 	<!-- join액션에서 실행할 mybatis mapper / insert는 resultType이 필요없음 -->
-	<insert id="insertAccount" parameterType="Account">
-		INSERT INTO ACCOUNT 
-		VALUES(#{accountno},#{custid},#{accounttype},#{balance},#{payment},#{interest},SYSDATE,SYSDATE+(#{term}*365),#{approval})
+	<insert id="insertBoard" parameterType="Board">
+		INSERT INTO QNABOARD
+		VALUES(#{boardno},#{custid},#{title},#{content},#{regdate},#{originalfile},#{savedfile},#{hitcount},#{replytext},#{repdate})
 	</insert>
 
-	<select id="selectAccount" parameterType="String" resultType="Account">
-		SELECT * FROM ACCOUNT WHERE CUSTID = #{custid}
+	<select id="getTotal" parameterType="hashmap" resultType="int">
+		SELECT * FROM QNABOARD
+		<if test="searchField !=null and searchText != null">
+			<where>
+
+				<if test="searchField=='title'">
+					title like '%'||#{searchText}||'%'
+				</if>
+				<if test="searchField=='content'">
+					content like '%'||#{searchText}||'%'
+				</if>
+				<if test="searchField=='custid'">
+					custid like '%'||#{searchText}||'%'
+				</if>
+				<if test="searchField=='all'">
+					custid like '%'||#{searchText}||'%'
+					or content like
+					'%'||#{searchText}||'%'
+					or title like '%'||#{searchText}||'%'
+				</if>
+			</where>
+		</if>
+		order by boardno desc
+	</select>
+	<select id="listBoard" parameterType="map" resultType="board">
+		select
+		boardno, custid, title, to_char(regdate, 'YYYY-MM-DD') regdate, hitcount,(DECODE(replytext,null,'예정','완료')) replytext
+		from qnabord
+		<if test="searchField !=null and searchText != null">
+			where
+			<if test="searchField=='title'">
+				title like '%'||#{searchText}||'%'
+			</if>
+			<if test="searchField=='content'">
+				content like '%'||#{searchText}||'%'
+			</if>
+			<if test="searchField=='custid'">
+				custid like '%'||#{searchText}||'%'
+			</if>
+			<if test="searchField=='all'">
+				custid like '%'||#{searchText}||'%'
+				or content like
+				'%'||#{searchText}||'%'
+				or title like '%'||#{searchText}||'%'
+			</if>
+		</if>
+		order by boardno desc
 	</select>
 
-	<select id="selectAccount2" parameterType="Account" resultType="Account">
-		SELECT * FROM ACCOUNT WHERE CUSTID = #{custid}		
-	</select>
+	<delete id="deleteBoard" parameterType="int">
+		SELECT * FROM QNABOARD
+		WHERE BOARDNO = #{int}
+	</delete>
 
 
-	<update id="updateAccount" parameterType="Account">
+	<update id="insertReply" parameterType="board">
+		UPDATE QNABOARD SET
+		REPLYTEXT = #{replytext} WHERE BOARDNO = #{boardno}
+	</update>
+
+	<update id="updateBoard" parameterType="board">
 
 	</update>
 

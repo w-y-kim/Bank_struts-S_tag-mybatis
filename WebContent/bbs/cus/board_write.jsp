@@ -55,7 +55,7 @@
 
 		<div id="contents"><!--내용-->
 			<h1>고객문의 게시판<span></span></h1><!-- 내용제목 -->
-			<form id="writeForm" action="insertBoard" method="post" enctype=""></form>
+			<form id="writeForm" action="insertBoard.action" name="myform" method="post" enctype="">
 			
 			<table class="wr_board">
 				<tr>
@@ -79,10 +79,11 @@
 			
 			</table>
 			<p class="list_btn">
-				<a href="board_list.action">취소</a>
-				<a href="board_view.action" class="select">등록</a>
+				<a href="javascript:history.go(-1)">취소</a>
+				<a href="javascript:myform.submit()" class="select">등록</a>
 				
 			</p>
+			</form>
 
 		</div>
 

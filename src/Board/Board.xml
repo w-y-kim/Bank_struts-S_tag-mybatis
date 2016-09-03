@@ -9,17 +9,15 @@
 	<constant name="struts.devMode" value="true" />
 
 	<package name="defaultAction" namespace="/" extends="basic">
-
-		<action name="board_list"> <result>/bbs/cus/board_list.jsp</result> </action>
+		<action name="board_list" class="sesschool.bank.action.BoardAction" method="listBoard"> <result>/bbs/cus/board_list.jsp</result> </action>
 		<action name="board_view"> <result>/bbs/cus/board_view.jsp</result> </action>
 		<action name="board_write"> <result>/bbs/cus/board_write.jsp</result> </action>
-
 	</package>
 
-	<package name="listAction" namespace="/" extends="basic">
 
+	<package name="listAction" namespace="/" extends="basic">
 		<action name="insertBoard" class="sesschool.bank.action.BoardAction" method="insertBoard">
-			<result>/board_list.jsp</result>
+			<result name="success">/board_list.jsp</result>
 		</action>
 	</package>
 
@@ -33,7 +31,7 @@
 	<!-- 파일 다운로드 액션 패키지-->
 	<package name="download" extends="basic">
 		<action name="fileDownload" class="sesschool.bank.action.FileDownloadAction">
-			<result name="success">
+			<result name="success" type="stream">
 				<param name="contentType">${contentType}</param>
 				<param name="contentLength">${contentLength}</param>
 				<param name="contentDisposition">${contentDisposition}</param><!-- 브라우저에서 바로 열려면 안써야함 혹은 그 반대였던듯ㅋㅋ-->
